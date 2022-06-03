@@ -1,0 +1,64 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewData["Title"] - Movie App</title>
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="brand" viewBox="0 0 16 16">
+        <path
+            d="M6.555 1.375 0 2.237v5.45h6.555V1.375zM0 13.795l6.555.933V8.313H0v5.482zm7.278-5.4.026 6.378L16 16V8.395H7.278zM16 0 7.33 1.244v6.414H16V0z" />
+    </symbol>
+</svg>
+
+<body>
+    <div class="container-fluid">
+        <div class="row justify-content-center bg-secondary navbar sticky-top">
+            <ul class="nav justify-content-center">
+
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Room" asp-action="ViewRoom">Room</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Room" asp-action="ViewRoomType">RoomType</a>
+                </li>
+                <li class="nav-item">
+                    <a class="navbar-brand mx-5" href="">
+                        <svg class="bi me-2" width="30" height="30">
+                            <use xlink:href="#brand"></use>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="">New Room</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                        data-bs-whatever="">New RoomType</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="container-fluid px-5 pt-5">
+        <div class="row px-5">
+            <div class="col px-5 d-flex">
+                <h1>@ViewData["Modal"]</h1>
+                <div class="container px-5">
+                    <table class="table table-striped">
+                        @RenderBody()
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="~/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
