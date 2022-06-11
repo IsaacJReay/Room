@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Room.Models;
 using System.Data.SqlClient;
+using System.Data;
 
 namespace Room.Controllers;
 
@@ -78,13 +79,95 @@ public class RoomController : Controller
 
     public IActionResult InputRoom()
     {
+        List<RoomTypeModal> RoomTypeList = new List<RoomTypeModal>();
+        SqlConnection connection = connectDB();
+
+        connection.Open();
+
+        String sql = "SELECT RoomTypeId,RoomType FROM RoomTypes";
+
+        using (SqlCommand command = new SqlCommand(sql, connection))
+        {
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    RoomTypeList.Add(
+                        new RoomTypeModal()
+                        {
+                            RoomTypeId = reader.GetInt32(0),
+                            RoomType = reader.GetString(1),
+                        }
+                    );
+                }
+            }
+        }
+
+        String sql1 = "SELECT TOP 1 RoomId FROM Rooms ORDER BY RoomId DESC; ";
+
+        using (SqlCommand command = new SqlCommand(sql1, connection))
+        {
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    ViewBag.RoomId = reader.GetInt32(0)+1;
+                }
+            }
+        }
+        ViewData["RoomTypeModal"] = RoomTypeList;
         return View();
     }
 
     public IActionResult InputRoomType()
     {
+        SqlConnection connection = connectDB();
+
+        connection.Open();
+
+        String sql = "SELECT TOP 1 RoomTypeId FROM RoomTypes ORDER BY RoomTypeId DESC; ";
+
+        using (SqlCommand command = new SqlCommand(sql, connection))
+        {
+            using (SqlDataReader reader = command.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    ViewBag.RoomTypeId = reader.GetInt32(0)+1;
+                }
+            }
+        }
         return View();
     }
+
+    [HttpPost]
+    public IActionResult RegisterRoom(RoomModal room_args)
+    {
+        SqlConnection connection = connectDB();
+        connection.Open();
+        String sqlStatement = "SET IDENTITY_INSERT Rooms ON;INSERT INTO Rooms (\"RoomId\",\"RoomName\", \"RoomDescription\", \"RoomTypeId\") VALUES (" + room_args.RoomId + ", '" + room_args.RoomName + "', '" + room_args.RoomDescription + "', " + room_args.RoomTypeId+ ");";
+        using (SqlCommand cmd = new SqlCommand(sqlStatement, connection))
+        {
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+        }
+        return Redirect("/");
+    }
+
+    [HttpPost]
+    public IActionResult RegisterRoomType(RoomTypeModal room_args)
+    {
+        SqlConnection connection = connectDB();
+        connection.Open();
+        String sqlStatement = "SET IDENTITY_INSERT RoomTypes ON;INSERT INTO RoomTypes (\"RoomTypeId\", \"RoomType\", \"RoomTypeDescription\", \"IsActive\") VALUES (" + room_args.RoomTypeId + ",'" + room_args.RoomType + "', '" + room_args.RoomTypeDescription + "', " + Convert.ToInt32(room_args.IsActive) + ");";
+        using (SqlCommand cmd = new SqlCommand(sqlStatement, connection))
+        {
+            cmd.CommandType = CommandType.Text;
+            cmd.ExecuteNonQuery();
+        }
+        return Redirect("/");
+    }
+
 
     public IActionResult ViewForm()
     {

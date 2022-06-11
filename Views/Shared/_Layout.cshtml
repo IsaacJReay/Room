@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="en" style="height: 100vh">
 
 <head>
     <meta charset="utf-8">
@@ -9,61 +9,72 @@
 </head>
 
 <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-    <symbol id="brand" viewBox="0 0 16 16">
+    <symbol id="brand" viewBox="0 0 16 16" fill="white">
         <path
             d="M6.555 1.375 0 2.237v5.45h6.555V1.375zM0 13.795l6.555.933V8.313H0v5.482zm7.278-5.4.026 6.378L16 16V8.395H7.278zM16 0 7.33 1.244v6.414H16V0z" />
     </symbol>
 </svg>
 
-<body>
+<body class="h-100">
     <div class="container-fluid">
-        <div class="row justify-content-center bg-primary navbar sticky-top">
-            <ul class="nav justify-content-center">
+        <div class="row px-5">
+            <div class="col px-5 d-flex">
+                <h1 class="pt-5">@ViewData["Modal"]</h1>
+                <div class="border border-start border-1 ms-5" style="height: 100vh;"></div>
+                <div class="container px-5 pt-4">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
 
+
+    <div class="container-fluid">
+        <div class="row justify-content-center bg-primary navbar fixed-bottom">
+            <ul class="nav justify-content-center">
                 <li class="nav-item">
-                    <a class="navbar-brand mx-5" href="">
+                    <a class="navbar-brand" href="">
                         <svg class="bi me-2" width="30" height="30">
                             <use xlink:href="#brand"></use>
                         </svg>
                     </a>
                 </li>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>   
+                
                 <li class="nav-item">
-                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="ViewForm">ViewForm</a>
+                    <a class="nav-link text-white bg-primary rounded border border-white" asp-area=""
+                        asp-controller="Room" asp-action="ViewRoom">Room</a>
                 </li>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <li class="nav-item">
-                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="ViewRoom">Room</a>
+                    <a class="nav-link text-white bg-primary rounded border border-white" asp-area=""
+                        asp-controller="Room" asp-action="ViewRoomType">RoomType</a>
                 </li>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <li class="nav-item">
-                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="ViewRoomType">RoomType</a>
+                    <a class="nav-link text-white bg-primary rounded border border-white" asp-area=""
+                        asp-controller="Room" asp-action="InputRoom">New Room</a>
                 </li>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <li class="nav-item">
-                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="InputRoom">New Room</a>
+                    <a class="nav-link text-white bg-primary rounded border border-white" asp-area=""
+                        asp-controller="Room" asp-action="InputRoomType">New RoomType</a>
+                </li>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <li class="nav-item">
+                    <a class="nav-link text-white bg-primary rounded border border-white" asp-area=""
+                        asp-controller="Room" asp-action="ProcessForm">ProcessForm</a>
                 </li>
                 <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <li class="nav-item">
-                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="InputRoomType">New RoomType</a>
+                    <a class="nav-link text-white bg-primary rounded border border-white" asp-area=""
+                        asp-controller="Room" asp-action="ViewForm">ViewForm</a>
                 </li>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
-                <li class="nav-item">
-                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="ProcessForm">ProcessForm</a>
-                </li>
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </p>
             </ul>
-        </div>
-    </div>
-
-    <div class="container-fluid px-5 pt-5">
-        <div class="row px-5">
-            <div class="col px-5 d-flex">
-                <h1>@ViewData["Modal"]</h1>
-                <div class="container px-5">
-                        @RenderBody()
-                </div>
-            </div>
         </div>
     </div>
 
