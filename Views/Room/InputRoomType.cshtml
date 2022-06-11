@@ -1,0 +1,22 @@
+@model RoomTypeModal
+
+@{
+    ViewData["Title"] = "RoomType";
+    ViewData["Modal"] = "RoomType";
+}
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="InputID" placeholder="123">
+    <label for="floatingInput">ID</label>
+</div>
+<div class="form-floating mb-3">
+    <input type="text" class="form-control" id="InputType" placeholder="Type">
+    <label for="floatingInput">Type</label>
+</div>
+<div class="form-floating mb-3">
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+    <label for="floatingInput">Description</label>
+</div>
+<div class="form-check form-switch">
+  <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckChecked" checked>
+  <label class="form-check-label" for="flexSwitchCheckChecked">Active</label>
+</div>

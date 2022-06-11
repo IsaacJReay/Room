@@ -2,20 +2,22 @@
     ViewData["Title"] = "RoomType";
     ViewData["Modal"] = "RoomType";
 }
-<thead>
-    <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Type</th>
-        <th scope="col">Description</th>
-        <th scope="col">Active</th>
-    </tr>
-</thead>
-@foreach (RoomTypeModal data in ViewData["RoomTypeModal"] as IList<RoomTypeModal> ?? default!)
-{
-    <tr>
-        <td>@data.RoomTypeId</td>
-        <td>@data.RoomType</td>
-        <td>@data.RoomTypeDescription</td>
-        <td>@data.IsActive</td>
-    </tr>
-}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Type</th>
+            <th scope="col">Description</th>
+            <th scope="col">Active</th>
+        </tr>
+    </thead>
+    @foreach (RoomTypeModal data in ViewData["RoomTypeModal"] as IList<RoomTypeModal> ?? default!)
+    {
+        <tr>
+            <td>@data.RoomTypeId</td>
+            <td>@data.RoomType</td>
+            <td>@data.RoomTypeDescription</td>
+            <td>@data.IsActive</td>
+        </tr>
+    }
+</table>

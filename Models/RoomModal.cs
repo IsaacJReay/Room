@@ -9,6 +9,7 @@ namespace Room.Models
         public int RoomId { get; set; }
         public string RoomName { get; set; } = default!;
         public string RoomDescription { get; set; } = default!;
+        public int RoomTypeId { get; set; }
         [ForeignKey("RoomTypeId")]
         public RoomTypeModal RoomType { get; set; } = default!;
 

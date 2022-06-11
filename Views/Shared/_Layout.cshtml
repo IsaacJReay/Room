@@ -17,15 +17,9 @@
 
 <body>
     <div class="container-fluid">
-        <div class="row justify-content-center bg-secondary navbar sticky-top">
+        <div class="row justify-content-center bg-primary navbar sticky-top">
             <ul class="nav justify-content-center">
 
-                <li class="nav-item">
-                    <a class="nav-link text-white" asp-area="" asp-controller="Room" asp-action="ViewRoom">Room</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" asp-area="" asp-controller="Room" asp-action="ViewRoomType">RoomType</a>
-                </li>
                 <li class="nav-item">
                     <a class="navbar-brand mx-5" href="">
                         <svg class="bi me-2" width="30" height="30">
@@ -33,13 +27,31 @@
                         </svg>
                     </a>
                 </li>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="">New Room</a>
+                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="ViewForm">ViewForm</a>
                 </li>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
                 <li class="nav-item">
-                    <a class="nav-link text-white" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"
-                        data-bs-whatever="">New RoomType</a>
+                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="ViewRoom">Room</a>
                 </li>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <li class="nav-item">
+                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="ViewRoomType">RoomType</a>
+                </li>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <li class="nav-item">
+                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="InputRoom">New Room</a>
+                </li>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <li class="nav-item">
+                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="InputRoomType">New RoomType</a>
+                </li>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;</p>
+                <li class="nav-item">
+                    <a class="nav-link text-dark bg-white rounded" asp-area="" asp-controller="Room" asp-action="ProcessForm">ProcessForm</a>
+                </li>
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
             </ul>
         </div>
     </div>
@@ -49,9 +61,7 @@
             <div class="col px-5 d-flex">
                 <h1>@ViewData["Modal"]</h1>
                 <div class="container px-5">
-                    <table class="table table-striped">
                         @RenderBody()
-                    </table>
                 </div>
             </div>
         </div>
