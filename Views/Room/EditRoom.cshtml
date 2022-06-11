@@ -1,31 +1,27 @@
 @model RoomModal
-
 @{
     ViewData["Title"] = "Room";
-    ViewData["Modal"] = "Create\nRoom";
-    int id = 1;
-    @if (ViewBag.RoomId != null)
-    {
-        id = ViewBag.RoomId;
-    }
-
+    ViewData["Modal"] = "Edit\nRoom";
+    int id = ViewBag.Room.RoomId;
+    string name = ViewBag.Room.RoomName;
+    string desc = ViewBag.Room.RoomDescription;
+    int idt = ViewBag.Room.RoomTypeId;
 }
-
-<form asp-controller="Room" asp-action="RegisterRoom" method="post">
+<form asp-controller="Room" asp-action="EditRoom" method="post">
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="InputID" placeholder="123" asp-for="RoomId" value=@id>
+        <input type="text" class="form-control" id="InputID" placeholder="123" asp-for="RoomId" value=@id readonly>
         <label for="floatingInput">ID</label>
     </div>
     <div class="form-floating mb-3">
-        <input type="text" class="form-control" id="InputName" placeholder="Name" asp-for="RoomName">
+        <input type="text" class="form-control" id="InputName" placeholder="Name" asp-for="RoomName" value=@name>
         <label for="floatingInput">Name</label>
     </div>
     <div class="form-floating mb-3">
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="RoomDescription"></textarea>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" asp-for="RoomDescription" value=@desc></textarea>
         <label for="floatingInput">Description</label>
     </div>
     <div class="form-floating mb-3">
-        <select class="form-select" aria-label="Select RoomType" asp-for="RoomTypeId">
+        <select class="form-select" aria-label="Select RoomType" asp-for="RoomTypeId" value=@idt>
             @foreach (RoomTypeModal data in ViewData["RoomTypeModal"] as IList<RoomTypeModal> ?? default!)
             {
                 <option value="@data.RoomTypeId">@data.RoomTypeId</option>

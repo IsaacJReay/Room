@@ -13,11 +13,19 @@
     </thead>
     @foreach (RoomModal data in ViewData["RoomModal"] as IList<RoomModal> ?? default!)
     {
+        var parms = new Dictionary<string, string>
+        {
+            { "RoomId", @data.RoomId.ToString() },
+            { "RoomName",@data.RoomName },
+            { "RoomDescription", @data.RoomDescription },
+            { "RoomTypeId", @data.RoomTypeId.ToString() }
+        };
         <tr>
             <td>@data.RoomId</td>
             <td>@data.RoomName</td>
             <td>@data.RoomDescription</td>
             <td>@data.RoomTypeId</td>
+            <td><a asp-controller="Room" asp-action="EditRoom" asp-all-route-data="parms">Edit</a></td>
         </tr>
     }
 </table>
